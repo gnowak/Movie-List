@@ -1,1 +1,1 @@
-movie-list
+Utility function running on express to take a json list of movie names from Firebase Realtime Database, query "The Movie Database" API for information on each movie, then save a new database entry with the extra data.
