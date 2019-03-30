@@ -1,0 +1,20 @@
+.Card {
+  color: #fff
+}
+.watched {
+  background: #8b8b8b;
+}
+.watched img{
+  opacity: 1;
+  -webkit-transition: opacity .6s;
+  transition: opacity .6s;
+}
+.unwatched {
+  background: #b8b8b8;
+}
+.unwatched img {
+  opacity: .05;
+
+  -webkit-transition: opacity .6s;
+  transition: opacity .6s;
+}
