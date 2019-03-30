@@ -8,18 +8,19 @@ import {config} from './config'
 
 async function fetchMovieInfo () {  
   
-  const delay = interval => new Promise(resolve => setTimeout(resolve, interval));
-  const sendMessage = async params => {
-    await delay(2000);
   
-    return axios(params);
-  };
-
   // map through the movies
-  const promises = movies.map(movie => {
+  const promises = movies.map(async movie => {
+    const delay = interval => new Promise(resolve => setTimeout(resolve, interval));
+    const sendMessage = async params => {
+      
+      await delay(1000);
+      
+      return axios(params)
+    };
     // request details from themoviedb's API with Axios
-    const response = sendMessage('https://api.themoviedb.org/3/search/movie?api_key='+ config['tmdb-api-key'] +'&language=en-US&page=1&include_adult=false&query=' + ((movie.name === 'The Lord of the Rings Trilogy') ? 'The+Lord+of+the+Rings' : encodeURI(movie.name) ))
-
+    const response = await sendMessage('https://api.themoviedb.org/3/search/movie?api_key='+ config['tmdb-api-key'] +'&language=en-US&page=1&include_adult=false&query=' + ((movie.name === 'The Lord of the Rings Trilogy') ? 'The+Lord+of+the+Rings' : encodeURI(movie.name) ))
+    
     return response;
 
   })
