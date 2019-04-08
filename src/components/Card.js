@@ -19,7 +19,7 @@ export default class Card extends Component {
   
   render() {
     return (  
-      <div className="w-10 tc dib">
+      <div className="w-10-l w-20-m w-25-s tc dib">
         <div>
           <h4 className="white">{ this.props.name }</h4>
         </div>
