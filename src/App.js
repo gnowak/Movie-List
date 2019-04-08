@@ -2,32 +2,28 @@ import React, { Component } from 'react';
 import 'tachyons';
 import './App.css';
 import CardList from './components/CardList';
+import Card from './components/Card';
 import { movies } from './movies';
 import axios from 'axios';
 import {config} from './config' 
+import Scroll from './components/Scroll'
 
 async function fetchMovieInfo () {  
-  
-  
   // map through the movies
-  const promises = movies.map(async movie => {
+  const promises = movies.map(async (movie, i) => {
     const delay = interval => new Promise(resolve => setTimeout(resolve, interval));
     const sendMessage = async params => {
-      
-      await delay(1000);
-      
-      return axios(params)
+      await delay((275*i));
+      return axios(params);
     };
     // request details from themoviedb's API with Axios
     const response = await sendMessage('https://api.themoviedb.org/3/search/movie?api_key='+ config['tmdb-api-key'] +'&language=en-US&page=1&include_adult=false&query=' + ((movie.name === 'The Lord of the Rings Trilogy') ? 'The+Lord+of+the+Rings' : encodeURI(movie.name) ))
     
     return response;
-
   })
 
   // wait until all promises resolve
   const results = await Promise.all(promises)
-
   // use the results
   console.log(results);
 
