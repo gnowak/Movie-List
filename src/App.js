@@ -56,11 +56,22 @@ class App extends Component {
   }
   render() {
     const {movieList} = this.state;
+    console.log(movieList);
+    
     
     return (
       <div className="tc App">
-        <h1>Movie Randomizer!</h1>
-        <CardList movies={ movieList } />
+        <h1 style={{ height: '20%' }} >Movie Randomizer!</h1>
+        {
+          movieList.length === 0 ? <h2 className="white">Loading...</h2> : 
+          <Card 
+            name={movieList[0].name}
+            poster_path={movieList[0].poster_path}
+          />
+        }
+        <Scroll>
+          {movieList.length === 0 ? <h2 className="white">Loading...</h2> : <CardList movies={ movieList } />}
+        </Scroll>
       </div>
     );
   }
