@@ -11,7 +11,7 @@ export const fetchMovie = () => async (dispatch) => {
     dispatch({type: FETCH_MOVIE_PENDING})
 
     const movieList = movies.map(async (movie, i)=>{
-        await stall(250*i + 10)
+        await stall(250*i)
         return await apiCall(movie)
         .then(res=>res.json())
         .then(async data=>{
