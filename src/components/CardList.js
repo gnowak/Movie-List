@@ -8,11 +8,14 @@ import Card from './Card';
 
 class CardList extends Component{
   componentDidMount() {
-    this.props.fetchMovie();
+    if(!this.props.movies.length > 0 )
+      this.props.fetchMovie();
+
   }
   
 
   render() {
+
     const movieItems = this.props.movies.map( (movie, i) => {
       return ( 
         <Card 
@@ -32,7 +35,7 @@ class CardList extends Component{
 }
 
 const mapStateToProp = state =>({
-  movies: state.movies.movies
+  movies: state.movies.movies,
 })
 
 export default connect(mapStateToProp, { fetchMovie })(CardList);
