@@ -1,5 +1,7 @@
 .Card {
-  color: #fff
+  color: #fff;
+  text-overflow: ellipsis;
+  /* height: 300px; */
 }
 .watched {
   background: #8b8b8b;

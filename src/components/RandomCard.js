@@ -16,7 +16,6 @@ export class RandomCard extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        console.log(prevProps, this.props)
         if(prevProps.movies.filter((movie)=> movie.unwatched === true ).length === 0  &&  this.props.movies.filter((movie)=> movie.unwatched === true ).length > 0){
             this.props.randomUnwatched()
         }
@@ -32,7 +31,7 @@ export class RandomCard extends Component {
                 <div>
                     <h4 className="white">{ this.props.random.name }</h4>
                 </div>
-                <div className={ "br3 pa3 ma2 bw2 shadow-5 Card random-card" }>
+                <div className={ "br3 pa3 ma2 bw2 shadow-5 random-card" }>
                     <img alt="Movie Poster" src={"https://image.tmdb.org/t/p/w185/" + this.props.random.poster_path } />
                 </div>
                 <button onClick={this.handleClick}>

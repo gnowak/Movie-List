@@ -16,7 +16,7 @@ export default function(state = intialState, action) {
             return {...state, movies: state.movies.map((movie, i) => i === action.payload ? {...movie, unwatched: !movie.unwatched}: movie)}
         case RANDOM_UNWATCHED_MOVIE:
             let randomMovie =  state.movies.filter(movie => movie.unwatched === true);
-            console.log("Unwatched Movies remaining", randomMovie)
+            console.log("Unwatched Movies remaining", randomMovie.length)
             return {...state, random: randomMovie[[Math.floor(Math.random() * randomMovie.length)]]}
         default:
             return state;
