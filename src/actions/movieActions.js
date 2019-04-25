@@ -1,4 +1,4 @@
-import { FETCH_MOVIE, FETCH_MOVIE_PENDING, TOGGLE_VIEWED } from './types.js'
+import { FETCH_MOVIE, FETCH_MOVIE_PENDING, TOGGLE_VIEWED, RANDOM_UNWATCHED_MOVIE } from './types.js'
 import { apiCall } from '../api/api';
 import {movies} from '../movies';
 
@@ -35,5 +35,10 @@ export function toggleViewed(id) {
         type: TOGGLE_VIEWED,
         payload: id
     }))
+}
 
+export function randomUnwatched() {
+    return (dispatch) => (dispatch({
+        type: RANDOM_UNWATCHED_MOVIE,
+    }))
 }

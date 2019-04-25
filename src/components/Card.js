@@ -6,15 +6,8 @@ import './Card.css';
 
 
 class Card extends Component {
-  // constructor(props){
-  //   super(props);
-  //   this.state = { unwatched: this.props.unwatched }
-    
-  //   this.handleClick = this.handleClick.bind(this);
-
-  // }
   
-  handleClick = () => {
+  toggleClick = () => {
     this.props.toggleViewed(this.props.id);
   }
   
@@ -24,7 +17,7 @@ class Card extends Component {
         <div>
           <h4 className="white">{ this.props.name }</h4>
         </div>
-        <div onClick={this.handleClick} className={ "br3 pa3 ma2 grow bw2 shadow-5 Card" + (this.props.unwatched === true ? " unwatched" : " watched") }>
+        <div onClick={this.toggleClick} className={ "br3 pa3 ma2 grow bw2 shadow-5 Card" + (this.props.unwatched === true ? " unwatched" : " watched") }>
           <img alt="Movie Poster" src={"https://image.tmdb.org/t/p/w92/" + this.props.poster_path } />
         </div>
       </div>
