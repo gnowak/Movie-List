@@ -16,6 +16,7 @@ export const fetchMovie = () => async (dispatch) => {
         .then(res=>res.json())
         .then(async data=>{
             return {
+                id: i,
                 name: ( data.results && data.results.length > 0) ? ( data.results[0].title === 'The Lord of the Rings: The Fellowship of the Ring' ? 'The Lord of the Rings Trilogy' : data.results[0].title ) : '', 
                 poster_path: ( data.results && data.results.length > 0) ? data.results[0].poster_path : '',
                 unwatched: true
