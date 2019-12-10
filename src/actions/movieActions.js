@@ -11,7 +11,7 @@ export const fetchMovie = () => async (dispatch) => {
     dispatch({type: FETCH_MOVIE_PENDING})
 
     const movieList = movies.map(async (movie, i)=>{
-        await stall(250*i)
+        await stall(275*i)
         return await apiCall(movie)
         .then(res=>res.json())
         .then(async data=>{
@@ -22,6 +22,7 @@ export const fetchMovie = () => async (dispatch) => {
                 unwatched: true
             }
         })
+        .catch(error=>console.log(error))
     })
     const results = await Promise.all(movieList);  
     return ( dispatch({
